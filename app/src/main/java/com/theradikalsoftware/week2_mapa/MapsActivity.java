@@ -2,6 +2,7 @@ package com.theradikalsoftware.week2_mapa;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.Toolbar;
 
@@ -9,6 +10,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -44,7 +47,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        mMap.addMarker(new MarkerOptions().position(this.llLocation).title(this.nameLocation));
+        mMap.addMarker(new MarkerOptions()
+                .position(this.llLocation)
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_decagram_black_36dp))
+                .title(this.nameLocation));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(this.llLocation, 15.0f));
     }
 }
